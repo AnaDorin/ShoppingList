@@ -15,6 +15,9 @@
 </form>
 
 <body>
+    <ul id='groceries'>
+
+    </ul>
 <script type="text/javascript">
     var groceries = []
     document.querySelector('#addGroceryFrom').addEventListener('submit', addGrocery)
@@ -24,7 +27,17 @@ function addGrocery (event) {
     groceries.push(groceryInput.value)
     groceryInput.value = ''
 
-    console.log(groceries)
+    updateGroceries()
+function updateGroceries () {
+    var groceriesElement = document.querySelector('#groceries')
+    groceriesElement.innerHTML = ''
+
+    for (var currentIndex = 0; currentIndex < groceries.length; currentIndex++) {
+       var grocery = groceries[currentIndex]
+
+       groceriesElement.innerHTML += '<li>' + grocery + '</li>'
+    }
+}
 }
 </script>
     
